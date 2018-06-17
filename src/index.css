@@ -3,3 +3,29 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+#chordsTitle {
+  text-align: center;
+}
+
+#chords {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.chord {
+  background: #1843a7;
+  border: 1px solid #0e0606;
+  padding: 5px;
+  width: 210px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+.chord:hover {
+  cursor: pointer;
+}
