@@ -4,6 +4,30 @@ body {
   font-family: sans-serif;
 }
 
+.app {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.navigation li {
+  list-style: none;
+  display: block;
+}
+
+.navigation li button {
+  border: 1px solid #999;
+  color: #444;
+  padding: 10px;
+  text-transform: uppercase;
+  display: block;
+  width: 100%;
+}
+
 #chordsTitle {
   text-align: center;
 }
