@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Chord from './components/Chord';
+import Header from './components/Header';
 import './index.css';
 
 const chordsList = [
@@ -20,7 +21,6 @@ const chordsList = [
   'F7',
   'Full F',
   'mini F',
-  'F7',
   'Full G',
   'Rock G',
   'Folk G',
@@ -39,7 +39,8 @@ class App extends Component {
           secondChord: chordsList[b],
           changes: 0
         };
-        chords.push(<Chord {...props} />);
+        const key = `${props.firstChord}-${props.secondChord}`;
+        chords.push(<Chord key={key} {...props} />);
       }
     }
     return chords;
@@ -47,10 +48,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <header>
-          <h1 id="chordsTitle"> Chord Changes </h1>
-        </header>
+      <div className="app">
+        <Header chordsList={chordsList} />
         <div id="chords">{this.renderChords()}</div>
       </div>
     );
