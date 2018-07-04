@@ -1,4 +1,4 @@
-class PrepareChords {
+class ChordsManager {
   constructor() {
     this.chords = [
       'E',
@@ -37,6 +37,24 @@ class PrepareChords {
     return JSON.parse(chordsData);
   }
 
+  setChord({ firstChord, secondChord, changes }) {
+    const chordsData = JSON.parse(localStorage.getItem('chordsData'));
+    if (chordsData !== null) {
+      const newData = chordsData.map(item => {
+        const foundChord =
+          item.firstChord === firstChord && item.secondChord === secondChord;
+        if (foundChord) {
+          item.changes.push(Number(changes));
+          item.changes = item.changes.slice(
+            Math.max(item.changes.length - 7, 0)
+          );
+        }
+        return item;
+      });
+      localStorage.setItem('chordsData', JSON.stringify(newData));
+    }
+  }
+
   getChordsPermutations() {
     const chordsPermutations = [];
     for (let a = 0; a < this.chords.length - 1; a++) {
@@ -53,4 +71,4 @@ class PrepareChords {
   }
 }
 
-export const prepareChords = new PrepareChords();
+export const chordsManager = new ChordsManager();
