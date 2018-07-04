@@ -10,7 +10,10 @@ const Header = props => {
   });
   return (
     <header>
-      <h1 id="chordsTitle"> Chord Changes </h1>
+      <h1 className="chordsTitle"> Chord Changes </h1>
+      <h2 className="chordsSubtitle">
+        Overall: {props.chordsList.length} chords
+      </h2>
       <ul className="navigation">
         <select className="chordsList">{options}</select>
         <li>
