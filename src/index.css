@@ -30,7 +30,7 @@ body {
   width: 100%;
 }
 
-#chordsTitle {
+.chordsTitle, .chordsSubtitle {
   text-align: center;
 }
 
