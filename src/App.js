@@ -1,22 +1,40 @@
 import React, { Component } from 'react';
-import { prepareChords } from './common/prepare-chords';
+import swal from 'sweetalert';
+import { chordsManager } from './common/chord-manager';
 import Chord from './components/Chord';
 import Header from './components/Header';
 import './index.css';
-
 class App extends Component {
+  state = {
+    chords: chordsManager.getChords()
+  };
+
+  askChordChanges = ({ firstChord, secondChord }) => {
+    const title = `Write your chord changes for ${firstChord}-${secondChord}`;
+    swal(title, {
+      content: 'input'
+    }).then(changes => {
+      chordsManager.setChord({ firstChord, secondChord, changes });
+      this.setState({
+        chords: chordsManager.getChords()
+      });
+      swal(`${changes} chord changes for ${firstChord}-${secondChord} is set`);
+    });
+  };
+
   renderChords() {
-    const chords = prepareChords.getChords();
-    return chords.map(item => {
+    return this.state.chords.map(item => {
       const key = `${item.firstChord}-${item.secondChord}`;
-      return <Chord key={key} {...item} />;
+      return (
+        <Chord askChordChanges={this.askChordChanges} key={key} {...item} />
+      );
     });
   }
 
   render() {
     return (
       <div className="app">
-        <Header chordsList={prepareChords.chords} />
+        <Header chordsList={chordsManager.chords} />
         <div id="chords">{this.renderChords()}</div>
       </div>
     );
