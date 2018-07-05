@@ -55,6 +55,14 @@ class ChordsManager {
     }
   }
 
+  getCombinationsForChord(chord) {
+    const allChords = this.getChords();
+    const result = allChords.filter(item => {
+      return item.firstChord === chord || item.secondChord === chord;
+    });
+    return result;
+  }
+
   getChordsPermutations() {
     const chordsPermutations = [];
     for (let a = 0; a < this.chords.length - 1; a++) {

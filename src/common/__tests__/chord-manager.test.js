@@ -65,4 +65,14 @@ describe('Prepare chords handles list of chords', () => {
     );
     expect(findSetData.changes.length).toBe(7);
   });
+
+  test('Get combinations for the one selected chord', () => {
+    const result = chordsManager.getCombinationsForChord('E');
+    expect(result.length).toBe(22);
+    result.forEach(item => {
+      expect(item).toHaveProperty('firstChord');
+      expect(item).toHaveProperty('secondChord');
+      expect(item).toHaveProperty('changes');
+    });
+  });
 });

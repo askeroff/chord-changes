@@ -22,6 +22,10 @@ class App extends Component {
     });
   };
 
+  setChords = chords => {
+    this.setState({ chords });
+  };
+
   renderChords() {
     return this.state.chords.map(item => {
       const key = `${item.firstChord}-${item.secondChord}`;
@@ -34,7 +38,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Header chordsList={chordsManager.chords} />
+        <Header setChords={this.setChords} chordsList={chordsManager.chords} />
         <div id="chords">{this.renderChords()}</div>
       </div>
     );
