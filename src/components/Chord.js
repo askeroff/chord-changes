@@ -2,10 +2,7 @@ import React from 'react';
 
 class Chord extends React.Component {
   getChordsInRightOrder = () => {
-    if (
-      this.props.selected !== 'all' &&
-      this.props.selected !== this.props.firstChord
-    ) {
+    if (!this.props.showAll && this.props.selected !== this.props.firstChord) {
       return {
         firstChord: this.props.secondChord,
         secondChord: this.props.firstChord

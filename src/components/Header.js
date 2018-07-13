@@ -5,11 +5,13 @@ class Header extends React.Component {
   showCombinationsForOneChord = () => {
     const chords = chordsManager.getCombinationsForChord(this.props.selected);
     this.props.setChords(chords);
+    this.props.setShowAll(false);
   };
 
   showAllChords = () => {
     const chords = chordsManager.getChords();
     this.props.setChords(chords);
+    this.props.setShowAll(true);
   };
 
   render() {

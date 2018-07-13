@@ -7,13 +7,15 @@ import './index.css';
 class App extends Component {
   state = {
     chords: chordsManager.getChords(),
-    selected: 'all'
+    selected: 'E',
+    showAll: true
   };
 
   askChordChanges = ({ firstChord, secondChord }) => {
     const title = `Write your chord changes for ${firstChord}-${secondChord}`;
     swal(title, {
-      content: 'input'
+      content: 'input',
+      buttons: true
     }).then(changes => {
       chordsManager.setChord({ firstChord, secondChord, changes });
       const chords =
@@ -34,12 +36,19 @@ class App extends Component {
     });
   };
 
+  setShowAll = show => {
+    this.setState({
+      showAll: show
+    });
+  };
+
   renderChords() {
     return this.state.chords.map(item => {
       const key = `${item.firstChord}-${item.secondChord}`;
       return (
         <Chord
           selected={this.state.selected}
+          showAll={this.state.showAll}
           askChordChanges={this.askChordChanges}
           key={key}
           {...item}
@@ -55,6 +64,7 @@ class App extends Component {
           handleSelectChange={this.handleSelectChange}
           selected={this.state.selected}
           setChords={this.setChords}
+          setShowAll={this.setShowAll}
           chordsList={chordsManager.chords}
         />
         <div id="chords">{this.renderChords()}</div>
