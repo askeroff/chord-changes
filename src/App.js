@@ -38,7 +38,12 @@ class App extends Component {
     return this.state.chords.map(item => {
       const key = `${item.firstChord}-${item.secondChord}`;
       return (
-        <Chord askChordChanges={this.askChordChanges} key={key} {...item} />
+        <Chord
+          selected={this.state.selected}
+          askChordChanges={this.askChordChanges}
+          key={key}
+          {...item}
+        />
       );
     });
   }
