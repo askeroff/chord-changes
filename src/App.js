@@ -6,7 +6,8 @@ import Header from './components/Header';
 import './index.css';
 class App extends Component {
   state = {
-    chords: chordsManager.getChords()
+    chords: chordsManager.getChords(),
+    selected: 'all'
   };
 
   askChordChanges = ({ firstChord, secondChord }) => {
@@ -15,15 +16,22 @@ class App extends Component {
       content: 'input'
     }).then(changes => {
       chordsManager.setChord({ firstChord, secondChord, changes });
-      this.setState({
-        chords: chordsManager.getChords()
-      });
-      swal(`${changes} chord changes for ${firstChord}-${secondChord} is set`);
+      const chords =
+        this.state.selected === 'all'
+          ? chordsManager.getChords()
+          : chordsManager.getCombinationsForChord(this.state.selected);
+      this.setState({ chords });
     });
   };
 
   setChords = chords => {
     this.setState({ chords });
+  };
+
+  handleSelectChange = event => {
+    this.setState({
+      selected: event.target.value
+    });
   };
 
   renderChords() {
@@ -38,7 +46,12 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Header setChords={this.setChords} chordsList={chordsManager.chords} />
+        <Header
+          handleSelectChange={this.handleSelectChange}
+          selected={this.state.selected}
+          setChords={this.setChords}
+          chordsList={chordsManager.chords}
+        />
         <div id="chords">{this.renderChords()}</div>
       </div>
     );

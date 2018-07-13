@@ -2,18 +2,8 @@ import React from 'react';
 import { chordsManager } from '../common/chord-manager';
 
 class Header extends React.Component {
-  state = {
-    selected: 'E'
-  };
-
-  handleSelectChange = event => {
-    this.setState({
-      selected: event.target.value
-    });
-  };
-
   showCombinationsForOneChord = () => {
-    const chords = chordsManager.getCombinationsForChord(this.state.selected);
+    const chords = chordsManager.getCombinationsForChord(this.props.selected);
     this.props.setChords(chords);
   };
 
@@ -37,7 +27,10 @@ class Header extends React.Component {
           Overall: {this.props.chordsList.length} chords
         </h2>
         <ul className="navigation">
-          <select onChange={this.handleSelectChange} className="chordsList">
+          <select
+            onChange={this.props.handleSelectChange}
+            className="chordsList"
+          >
             {options}
           </select>
           <li>
