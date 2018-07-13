@@ -14,7 +14,20 @@ class Header extends React.Component {
     this.props.setShowAll(true);
   };
 
+  handleTimer = () => {
+    const timerIsOn = this.props.timerIsOn;
+    if (timerIsOn) {
+      this.props.handleTimerStop();
+    } else {
+      this.props.handleTimerStart();
+    }
+    this.props.setTimerOn(!timerIsOn);
+  };
+
   render() {
+    const timerButtonString = this.props.timerIsOn
+      ? 'Cancel One Minute Timer'
+      : 'Start One Minute Timer';
     const options = this.props.chordsList.map(chord => {
       return (
         <option key={chord} value={chord} name={chord}>
@@ -44,6 +57,9 @@ class Header extends React.Component {
             <button onClick={this.showAllChords}>
               Show All Permutations For All Chords
             </button>
+          </li>
+          <li>
+            <button onClick={this.handleTimer}>{timerButtonString}</button>
           </li>
         </ul>
       </header>
