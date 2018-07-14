@@ -17,11 +17,12 @@ class Chord extends React.Component {
   render() {
     const { askChordChanges, changes } = this.props;
     const { firstChord, secondChord } = this.getChordsInRightOrder();
+    const chordObject = {
+      firstChord: this.props.firstChord,
+      secondChord: this.props.secondChord
+    };
     return (
-      <p
-        onClick={askChordChanges.bind(this, { firstChord, secondChord })}
-        className="chord"
-      >
+      <p onClick={askChordChanges.bind(this, chordObject)} className="chord">
         {firstChord} - {secondChord} ({changes[changes.length - 1]})
       </p>
     );
