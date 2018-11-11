@@ -1,6 +1,13 @@
 {
-  "main.css": "static/css/main.33761d50.css",
-  "main.css.map": "static/css/main.33761d50.css.map",
-  "main.js": "static/js/main.629bdbf5.js",
-  "main.js.map": "static/js/main.629bdbf5.js.map"
+  "main.css": "/chord-changes/static/css/main.8ab34cc0.chunk.css",
+  "main.js": "/chord-changes/static/js/main.398fe4b4.chunk.js",
+  "main.js.map": "/chord-changes/static/js/main.398fe4b4.chunk.js.map",
+  "static/js/1.de54985b.chunk.js": "/chord-changes/static/js/1.de54985b.chunk.js",
+  "static/js/1.de54985b.chunk.js.map": "/chord-changes/static/js/1.de54985b.chunk.js.map",
+  "runtime~main.js": "/chord-changes/static/js/runtime~main.121a089f.js",
+  "runtime~main.js.map": "/chord-changes/static/js/runtime~main.121a089f.js.map",
+  "static/css/main.8ab34cc0.chunk.css.map": "/chord-changes/static/css/main.8ab34cc0.chunk.css.map",
+  "index.html": "/chord-changes/index.html",
+  "precache-manifest.9f8dbb2ae7909521946d775b1655f34e.js": "/chord-changes/precache-manifest.9f8dbb2ae7909521946d775b1655f34e.js",
+  "service-worker.js": "/chord-changes/service-worker.js"
 }
